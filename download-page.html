@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Download Battery Health Prediction System - AI-powered desktop app for analyzing Li-ion battery health using NASA-trained ML models">
+    <meta name="keywords" content="battery health, prediction, AI, machine learning, NASA, desktop app">
+    <title>Download Battery Health Prediction System | Free Battery Analysis Tool</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #2d3748;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .version {
+            display: inline-block;
+            background: #48bb78;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+
+        .tagline {
+            font-size: 1.2em;
+            color: #4a5568;
+            margin-top: 15px;
+            font-weight: 300;
+        }
+
+        /* Main Content */
+        .main-content {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .description {
+            background: #f7fafc;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border-left: 5px solid #667eea;
+        }
+
+        .description h2 {
+            color: #2d3748;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+
+        .description p {
+            color: #4a5568;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #667eea10, #764ba210);
+            padding: 25px;
+            border-radius: 15px;
+            border: 2px solid #e2e8f0;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.2);
+        }
+
+        .feature-card h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+
+        .feature-card p {
+            color: #4a5568;
+        }
+
+        /* Download Section */
+        .download-section {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 50px;
+            border-radius: 20px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .download-section h2 {
+            font-size: 2.2em;
+            margin-bottom: 20px;
+        }
+
+        .download-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .download-btn {
+            background: white;
+            color: #667eea;
+            padding: 20px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            background: #f7fafc;
+        }
+
+        .download-btn.coming-soon {
+            background: #cbd5e0;
+            color: #718096;
+            cursor: not-allowed;
+        }
+
+        .file-info {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            font-size: 0.95em;
+        }
+
+        /* Installation Instructions */
+        .instructions {
+            margin: 40px 0;
+        }
+
+        .instructions h2 {
+            color: #2d3748;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+
+        .os-instructions {
+            background: #f7fafc;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            border-left: 5px solid #667eea;
+        }
+
+        .os-instructions h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        .os-instructions ol {
+            margin-left: 25px;
+            color: #4a5568;
+        }
+
+        .os-instructions li {
+            margin-bottom: 10px;
+            font-size: 1.05em;
+        }
+
+        /* System Requirements */
+        .requirements {
+            background: #fff5f5;
+            border-left: 5px solid #fc8181;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+
+        .requirements h3 {
+            color: #c53030;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        .req-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .req-item {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .req-item strong {
+            color: #2d3748;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* Screenshot Placeholder */
+        .screenshots {
+            margin: 40px 0;
+        }
+
+        .screenshots h2 {
+            color: #2d3748;
+            margin-bottom: 20px;
+            font-size: 2em;
+            text-align: center;
+        }
+
+        .screenshot-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .screenshot-placeholder {
+            background: linear-gradient(135deg, #e2e8f0, #cbd5e0);
+            border-radius: 15px;
+            padding: 100px 20px;
+            text-align: center;
+            color: #718096;
+            font-size: 1.1em;
+            border: 3px dashed #a0aec0;
+        }
+
+        /* Security Notice */
+        .security-notice {
+            background: #f0fff4;
+            border-left: 5px solid #48bb78;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+
+        .security-notice h3 {
+            color: #22543d;
+            margin-bottom: 10px;
+            font-size: 1.5em;
+        }
+
+        .security-notice p {
+            color: #276749;
+            font-size: 1.05em;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: #f7fafc;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .contact h2 {
+            color: #2d3748;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+
+        .contact p {
+            color: #4a5568;
+            font-size: 1.1em;
+            margin-bottom: 20px;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .contact-btn {
+            background: #667eea;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .contact-btn:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            color: #4a5568;
+        }
+
+        footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .download-section {
+                padding: 30px 20px;
+            }
+
+            .download-btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .main-content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>🔋 Battery Health Prediction System</h1>
+            <span class="version">v1.0.0</span>
+            <p class="tagline">AI-Powered Battery Analysis Using NASA-Trained Machine Learning Models</p>
+        </header>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Description -->
+            <div class="description">
+                <h2>🚀 What is Battery Health Prediction System?</h2>
+                <p>
+                    Battery Health Prediction System is a professional desktop application that uses advanced AI and machine learning 
+                    to analyze the health and remaining life of Li-ion batteries. Built on NASA battery degradation research data, 
+                    our models provide accurate predictions to help you understand your battery's condition.
+                </p>
+                <p>
+                    <strong>How AI Powers the App:</strong> The system uses two trained ML models - a Logistic Regression classifier 
+                    for State of Health (SOH) prediction and a Random Forest classifier for Remaining Useful Life (RUL) estimation. 
+                    Both models were trained on 2,247 real NASA battery cycling samples with 27 engineered features per prediction, 
+                    ensuring high accuracy and reliability.
+                </p>
+                <p>
+                    <strong>Who Is This For?</strong> Perfect for battery researchers, electronics engineers, EV enthusiasts, data 
+                    scientists, students, and anyone working with Li-ion batteries who needs to assess battery health and predict 
+                    remaining useful life.
+                </p>
+            </div>
+
+            <!-- Features -->
+            <div class="features">
+                <div class="feature-card">
+                    <h3>🎯 SOH Prediction</h3>
+                    <p>State of Health classification with ML confidence scores using Logistic Regression models</p>
+                </div>
+                <div class="feature-card">
+                    <h3>⏱️ RUL Estimation</h3>
+                    <p>Remaining Useful Life prediction powered by Random Forest classifiers with probability outputs</p>
+                </div>
+                <div class="feature-card">
+                    <h3>📊 Real-time Visualization</h3>
+                    <p>Interactive charts and graphs showing battery metrics and prediction confidence</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🤖 BatteryAgent AI</h3>
+                    <p>Intelligent decision system that provides actionable recommendations based on analysis</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🔒 Privacy First</h3>
+                    <p>All processing happens locally on your machine - no data sent to external servers</p>
+                </div>
+                <div class="feature-card">
+                    <h3>📦 No Dependencies</h3>
+                    <p>Complete standalone installer - Python runtime and all ML libraries included</p>
+                </div>
+            </div>
+
+            <!-- Download Section -->
+            <div class="download-section">
+                <h2>📥 Download Now - Free & Open Source</h2>
+                <p>Choose your operating system and start analyzing battery health in minutes</p>
+                
+                <div class="download-buttons">
+                    <a href="#windows" class="download-btn">
+                        🪟 Windows
+                        <br><small>Setup 1.0.0.exe</small>
+                    </a>
+                    <a href="#mac" class="download-btn coming-soon">
+                        🍎 macOS
+                        <br><small>Coming Soon</small>
+                    </a>
+                    <a href="#linux" class="download-btn coming-soon">
+                        🐧 Linux
+                        <br><small>Coming Soon</small>
+                    </a>
+                </div>
+
+                <div class="file-info">
+                    <strong>Windows:</strong> Battery Health Prediction Setup 1.0.0.exe | 75.7 MB<br>
+                    <strong>macOS:</strong> Battery Health Prediction 1.0.0.dmg | Coming Soon<br>
+                    <strong>Linux:</strong> Battery Health Prediction 1.0.0.AppImage | Coming Soon
+                </div>
+            </div>
+
+            <!-- Installation Instructions -->
+            <div class="instructions">
+                <h2>📋 Installation Instructions</h2>
+
+                <div class="os-instructions" id="windows">
+                    <h3>🪟 Windows (10/11 - 64-bit)</h3>
+                    <ol>
+                        <li><strong>Download</strong> the <code>Battery Health Prediction Setup 1.0.0.exe</code> file</li>
+                        <li><strong>Locate</strong> the downloaded file (usually in your Downloads folder)</li>
+                        <li><strong>Right-click</strong> and select "Run as Administrator" (recommended) or double-click to run</li>
+                        <li>If Windows SmartScreen appears, click <strong>"More info"</strong> then <strong>"Run anyway"</strong> 
+                            (the app is safe - this appears for new applications)</li>
+                        <li>Follow the installation wizard - accept the license and choose installation location</li>
+                        <li>Wait for installation to complete (~1-2 minutes)</li>
+                        <li><strong>Launch</strong> the app from Start Menu or Desktop shortcut</li>
+                        <li>Test files are automatically copied to your Desktop for quick testing</li>
+                    </ol>
+                    <p><strong>Note:</strong> The installer includes Python runtime, ML models, and all dependencies - no additional setup required!</p>
+                </div>
+
+                <div class="os-instructions" id="mac">
+                    <h3>🍎 macOS (10.15+ Catalina or later)</h3>
+                    <ol>
+                        <li><strong>Download</strong> the <code>Battery Health Prediction 1.0.0.dmg</code> file</li>
+                        <li><strong>Open</strong> the downloaded DMG file</li>
+                        <li><strong>Drag</strong> the Battery Health Prediction app icon to the Applications folder</li>
+                        <li><strong>Eject</strong> the DMG from Finder</li>
+                        <li><strong>Open</strong> Applications folder and find Battery Health Prediction</li>
+                        <li><strong>Right-click</strong> the app and select "Open" (first time only)</li>
+                        <li>If macOS asks, click <strong>"Open"</strong> to confirm (the app is safe and notarized)</li>
+                        <li>The app will launch - you're ready to analyze batteries!</li>
+                    </ol>
+                    <p><strong>Note:</strong> If you see "App can't be opened", go to System Preferences → Security & Privacy → Click "Open Anyway"</p>
+                </div>
+
+                <div class="os-instructions" id="linux">
+                    <h3>🐧 Linux (Ubuntu 20.04+, Debian, Fedora)</h3>
+                    
+                    <strong>Option A: AppImage (Universal)</strong>
+                    <ol>
+                        <li><strong>Download</strong> the <code>Battery-Health-Prediction-1.0.0.AppImage</code> file</li>
+                        <li><strong>Open terminal</strong> and navigate to download location: <code>cd ~/Downloads</code></li>
+                        <li><strong>Make executable:</strong> <code>chmod +x Battery-Health-Prediction-1.0.0.AppImage</code></li>
+                        <li><strong>Run:</strong> <code>./Battery-Health-Prediction-1.0.0.AppImage</code></li>
+                        <li>(Optional) Move to Applications: <code>sudo mv Battery-Health-Prediction-1.0.0.AppImage /opt/</code></li>
+                    </ol>
+
+                    <strong>Option B: .deb Package (Ubuntu/Debian)</strong>
+                    <ol>
+                        <li><strong>Download</strong> the <code>battery-health-prediction_1.0.0_amd64.deb</code> file</li>
+                        <li><strong>Install:</strong> <code>sudo dpkg -i battery-health-prediction_1.0.0_amd64.deb</code></li>
+                        <li><strong>Fix dependencies (if needed):</strong> <code>sudo apt-get install -f</code></li>
+                        <li><strong>Launch:</strong> Search for "Battery Health Prediction" in applications or run <code>battery-health-prediction</code></li>
+                    </ol>
+
+                    <p><strong>Note:</strong> Requires X11/Wayland display server. Tested on Ubuntu 22.04, Debian 11, Fedora 38.</p>
+                </div>
+            </div>
+
+            <!-- System Requirements -->
+            <div class="requirements">
+                <h3>💻 System Requirements</h3>
+                <div class="req-grid">
+                    <div class="req-item">
+                        <strong>Windows:</strong>
+                        Windows 10/11 (64-bit)<br>
+                        4GB RAM minimum<br>
+                        500MB free disk space
+                    </div>
+                    <div class="req-item">
+                        <strong>macOS:</strong>
+                        macOS 10.15+ (Catalina or later)<br>
+                        4GB RAM minimum<br>
+                        500MB free disk space
+                    </div>
+                    <div class="req-item">
+                        <strong>Linux:</strong>
+                        Ubuntu 20.04+ / Debian 11+ / Fedora 38+<br>
+                        4GB RAM minimum<br>
+                        500MB free disk space
+                    </div>
+                    <div class="req-item">
+                        <strong>All Platforms:</strong>
+                        No internet required<br>
+                        No Python installation needed<br>
+                        Works offline
+                    </div>
+                </div>
+            </div>
+
+            <!-- Security Notice -->
+            <div class="security-notice">
+                <h3>🛡️ Security & Safety</h3>
+                <p>
+                    ✅ <strong>100% Safe & Malware-Free:</strong> This application is open-source (MIT License) and contains no malware, 
+                    spyware, or adware. All processing happens locally on your computer.<br><br>
+                    ✅ <strong>Privacy Protected:</strong> No data collection, no telemetry, no cloud uploads. Your battery data stays on your machine.<br><br>
+                    ✅ <strong>Verified Code:</strong> Source code is available for inspection. Built with trusted technologies: Electron, 
+                    Python, scikit-learn.<br><br>
+                    ⚠️ <strong>Windows SmartScreen Warning:</strong> As a new application, Windows may show a security warning. 
+                    Click "More info" → "Run anyway" to proceed safely.
+                </p>
+            </div>
+
+            <!-- Screenshots -->
+            <div class="screenshots">
+                <h2>📸 App Screenshots</h2>
+                <div class="screenshot-grid">
+                    <div class="screenshot-placeholder">
+                        📊 Main Dashboard<br>
+                        <small>Replace with actual screenshot</small>
+                    </div>
+                    <div class="screenshot-placeholder">
+                        🎯 Prediction Results<br>
+                        <small>Replace with actual screenshot</small>
+                    </div>
+                    <div class="screenshot-placeholder">
+                        📈 Charts & Visualization<br>
+                        <small>Replace with actual screenshot</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact/Support -->
+        <div class="main-content contact">
+            <h2>📧 Support & Contact</h2>
+            <p>
+                Need help? Found a bug? Have a feature request?<br>
+                We're here to assist you!
+            </p>
+            <div class="contact-links">
+                <a href="https://github.com/yourusername/battery-health-prediction/issues" class="contact-btn">
+                    🐛 Report a Bug
+                </a>
+                <a href="https://github.com/yourusername/battery-health-prediction/discussions" class="contact-btn">
+                    💬 Discussions
+                </a>
+                <a href="mailto:support@batteryhealth.app" class="contact-btn">
+                    📬 Email Support
+                </a>
+            </div>
+            <p style="margin-top: 30px; font-size: 0.95em;">
+                <strong>Documentation:</strong> Press F12 in the app to see detailed model outputs and debug information<br>
+                <strong>Test Files:</strong> Included with installation on Desktop for immediate testing<br>
+                <strong>License:</strong> MIT License - Free for personal and commercial use
+            </p>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>
+                <strong>Battery Health Prediction System v1.0.0</strong><br>
+                Built with ❤️ using Electron, Python, scikit-learn, and Chart.js<br>
+                Licensed under <a href="https://opensource.org/licenses/MIT" target="_blank">MIT License</a> | 
+                <a href="https://github.com/yourusername/battery-health-prediction" target="_blank">Source Code on GitHub</a><br>
+                <small>NASA Battery Data © NASA | Models trained on public research data</small>
+            </p>
+            <p style="margin-top: 15px; font-size: 0.9em;">
+                &copy; 2026 Battery Health Team. All rights reserved.
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Download link placeholder - replace with actual links
+        document.querySelectorAll('.download-btn:not(.coming-soon)').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                if (this.getAttribute('href').startsWith('#')) {
+                    e.preventDefault();
+                    alert('Download link will be added here.\n\nReplace href with:\n- Direct link from file hosting\n- GitHub Release download URL\n- Your custom domain link');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
