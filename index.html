@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline';">
     <title>Battery Health Prediction System</title>
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -103,8 +103,12 @@
                             <span class="metric-data" id="finalCapacity">-</span>
                         </div>
                         <div class="metric-row">
-                            <span class="metric-name">Average Operating Temp:</span>
-                            <span class="metric-data" id="avgTemp">-</span>
+                            <span class="metric-name">SOH ML Confidence:</span>
+                            <span class="metric-data" id="sohConfidence">-</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-name">RUL ML Confidence:</span>
+                            <span class="metric-data" id="rulConfidence">-</span>
                         </div>
                     </div>
                 </div>

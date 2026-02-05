@@ -45,6 +45,7 @@ def predict_from_csv(csv_path):
             "records": len(cycle_data),
             "features_engineered": len(features),
             "predictions": predictions,
+            "engineered_features": features,  # Include full feature set for verification
             "sample_features": {k: features[k] for k in list(features.keys())[:5]}  # First 5 for debugging
         }
         

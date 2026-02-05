@@ -9,6 +9,7 @@ const BatteryAgent = require('./agents/BatteryAgent');
 
 class BatteryPredictionService {
     constructor() {
+        // Use virtual environment Python
         this.pythonPath = path.join(__dirname, '.venv', 'Scripts', 'python.exe');
         this.pipelinePath = path.join(__dirname, 'pipeline.py');
         this.agent = new BatteryAgent(20); // 20 readings memory
@@ -21,10 +22,21 @@ class BatteryPredictionService {
      */
     async predictFromFile(csvPath) {
         return new Promise((resolve, reject) => {
-            const pythonProcess = spawn(this.pythonPath, [this.pipelinePath, csvPath]);
+            let pythonProcess;
+            
+            try {
+                pythonProcess = spawn(this.pythonPath, [this.pipelinePath, csvPath]);
+            } catch (error) {
+                reject(new Error(`Failed to spawn Python process: ${error.message}`));
+                return;
+            }
             
             let stdout = '';
             let stderr = '';
+
+            pythonProcess.on('error', (error) => {
+                reject(new Error(`Python process error: ${error.message}. Make sure Python is installed and in your PATH.`));
+            });
 
             pythonProcess.stdout.on('data', (data) => {
                 stdout += data.toString();
@@ -36,12 +48,22 @@ class BatteryPredictionService {
 
             pythonProcess.on('close', (code) => {
                 if (code !== 0) {
-                    reject(new Error(`Python pipeline failed: ${stderr}`));
+                    const errorMsg = stderr || stdout || 'Unknown error';
+                    reject(new Error(`Python pipeline failed with code ${code}: ${errorMsg}`));
+                    return;
+                }
+
+                if (!stdout || stdout.trim().length === 0) {
+                    reject(new Error('Python script produced no output'));
                     return;
                 }
 
                 try {
                     const result = JSON.parse(stdout);
+                    console.log('[PredictionService] Raw ML output:', JSON.stringify(result.predictions, null, 2));
+                    console.log('[PredictionService] Engineered Features Sample:');
+                    console.log('  ', JSON.stringify(result.sample_features, null, 2));
+                    console.log('[PredictionService] Total features engineered:', result.features_engineered);
                     
                     if (!result.success) {
                         reject(new Error(result.error || 'Prediction failed'));
@@ -59,8 +81,13 @@ class BatteryPredictionService {
                         confidence: modelPredictions.confidence
                     };
 
+                    // Clear agent history for fresh analysis of each battery
+                    // (prevents previous batteries from affecting current prediction)
+                    this.agent.clearHistory();
+
                     // Get intelligent decision from agent
                     const agentDecision = this.agent.analyze(agentInput);
+                    console.log('[PredictionService] Agent decision:', agentDecision.state, 'Action:', agentDecision.recommendedAction);
 
                     // Combine ML predictions + Agent decision
                     resolve({
@@ -78,7 +105,7 @@ class BatteryPredictionService {
                         agentDecision: {
                             state: agentDecision.state,
                             confidence: agentDecision.confidence,
-                            action: agentDecision.recommendedAction,
+                            recommendedAction: agentDecision.recommendedAction,
                             reasoning: agentDecision.reasoning,
                             metadata: agentDecision.metadata
                         },
@@ -94,9 +121,17 @@ class BatteryPredictionService {
                     });
                     
                 } catch (error) {
-                    reject(new Error(`Failed to parse prediction results: ${error.message}`));
+                    reject(new Error(`Failed to parse prediction results: ${error.message}\nOutput: ${stdout.substring(0, 500)}`));
                 }
             });
+
+            // Add timeout to prevent hanging
+            setTimeout(() => {
+                if (pythonProcess && !pythonProcess.killed) {
+                    pythonProcess.kill();
+                    reject(new Error('Python process timed out after 30 seconds'));
+                }
+            }, 30000);
         });
     }
 
@@ -116,3 +151,4 @@ class BatteryPredictionService {
 }
 
 module.exports = BatteryPredictionService;
+
