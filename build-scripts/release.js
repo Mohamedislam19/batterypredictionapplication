@@ -31,8 +31,8 @@ function log(message, color = 'reset') {
 
 // Configuration
 const CONFIG = {
-    owner: process.env.GITHUB_OWNER || 'your-github-username',  // Change this
-    repo: process.env.GITHUB_REPO || 'battery-health-prediction',  // Change this
+    owner: process.env.GITHUB_OWNER || 'Mohamedislam19',
+    repo: process.env.GITHUB_REPO || 'batterypredictionapplication',
     token: process.env.GITHUB_TOKEN,
     version: require('../package.json').version
 };

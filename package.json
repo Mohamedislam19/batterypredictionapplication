@@ -10,9 +10,16 @@
     "build:mac": "electron-builder build --mac",
     "dist": "electron-builder",
     "package": "node build-scripts/package.js",
-    "release": "node build-scripts/release.js"
+    "release": "node build-scripts/release.js",
+    "deploy": "npm run package && npm run release"
   },
-  "keywords": ["battery", "health", "prediction", "nasa", "electron"],
+  "keywords": [
+    "battery",
+    "health",
+    "prediction",
+    "nasa",
+    "electron"
+  ],
   "author": "Battery Health Team",
   "license": "MIT",
   "build": {
@@ -21,6 +28,9 @@
     "directories": {
       "output": "dist",
       "buildResources": "build-resources"
+    },
+    "win": {
+      "target": "nsis"
     },
     "files": [
       "main.js",
@@ -39,19 +49,25 @@
       {
         "from": "python-dist",
         "to": "python-dist",
-        "filter": ["**/*"]
+        "filter": [
+          "**/*"
+        ]
       },
       {
         "from": "Battery-health-prediction-develop/models",
         "to": "models",
-        "filter": ["*.joblib"]
+        "filter": [
+          "*.joblib"
+        ]
       }
     ],
     "win": {
       "target": [
         {
           "target": "nsis",
-          "arch": ["x64"]
+          "arch": [
+            "x64"
+          ]
         }
       ],
       "icon": "build-resources/icon.ico"
@@ -68,7 +84,10 @@
       "license": "LICENSE.txt"
     },
     "mac": {
-      "target": ["dmg", "zip"],
+      "target": [
+        "dmg",
+        "zip"
+      ],
       "icon": "build-resources/icon.icns",
       "category": "public.app-category.utilities"
     },
@@ -79,7 +98,7 @@
   },
   "devDependencies": {
     "electron": "^28.0.0",
-    "electron-builder": "^24.9.1"
+    "electron-builder": "^24.13.3"
   },
   "dependencies": {
     "chart.js": "^4.4.1"
