@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline';">
+    <title>Battery Health Prediction System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Cosmic Background Effects -->
+    <div class="cosmic-bg">
+        <div class="cosmic-orb orb-1"></div>
+        <div class="cosmic-orb orb-2"></div>
+        <div class="cosmic-orb orb-3"></div>
+    </div>
+
+    <!-- Header Section -->
+    <header class="app-header">
+        <div class="header-content">
+            <div class="title-section">
+                <h1 class="app-title">⚡ Battery Health Prediction System</h1>
+                <p class="app-subtitle">🛰️ NASA Li-ion Battery Degradation Analysis</p>
+            </div>
+            <div class="status-indicator">
+                <div class="status-label">Prediction Service:</div>
+                <div class="status-value" id="serviceStatus">
+                    <span class="status-dot online"></span>
+                    <span>ONLINE</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- File Input Section -->
+        <section class="file-section card">
+            <h2 class="section-title">Battery Record Input</h2>
+            <div class="file-upload-area" id="dropZone">
+                <div class="upload-icon">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
+                    </svg>
+                </div>
+                <p class="upload-text">Drag and drop CSV file here</p>
+                <p class="upload-subtext">or</p>
+                <button class="upload-button" id="selectFileBtn">Select Battery Record File</button>
+                <input type="file" id="fileInput" accept=".csv" hidden>
+            </div>
+            
+            <div class="file-metadata" id="fileMetadata" style="display: none;">
+                <h3 class="metadata-title">File Information</h3>
+                <div class="metadata-grid">
+                    <div class="metadata-item">
+                        <span class="metadata-label">File Name:</span>
+                        <span class="metadata-value" id="fileName">-</span>
+                    </div>
+                    <div class="metadata-item">
+                        <span class="metadata-label">Records:</span>
+                        <span class="metadata-value" id="recordCount">-</span>
+                    </div>
+                    <div class="metadata-item">
+                        <span class="metadata-label">Battery ID:</span>
+                        <span class="metadata-value" id="batteryId">-</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results Grid -->
+        <div class="results-grid" id="resultsGrid" style="display: none;">
+            <!-- Prediction Output Panel -->
+            <section class="prediction-section card">
+                <h2 class="section-title">Health Summary</h2>
+                
+                <div class="health-display">
+                    <div class="metric-primary">
+                        <div class="metric-label">State of Health (SoH)</div>
+                        <div class="metric-value" id="sohValue">--</div>
+                        <div class="metric-unit">%</div>
+                    </div>
+                    <div class="status-badge" id="healthStatus">NOMINAL</div>
+                </div>
+
+                <div class="rul-display">
+                    <div class="metric-secondary">
+                        <div class="metric-label">Remaining Useful Life</div>
+                        <div class="metric-value-small" id="rulValue">--</div>
+                        <div class="metric-unit">cycles</div>
+                    </div>
+                </div>
+
+                <div class="key-metrics">
+                    <h3 class="subsection-title">Key Metrics</h3>
+                    <div class="metrics-list">
+                        <div class="metric-row">
+                            <span class="metric-name">Initial Capacity:</span>
+                            <span class="metric-data" id="initialCapacity">-</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-name">Final Recorded Capacity:</span>
+                            <span class="metric-data" id="finalCapacity">-</span>
+                        </div>
+                        <div class="metric-row">
+                            <span class="metric-name">Average Operating Temp:</span>
+                            <span class="metric-data" id="avgTemp">-</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Visualization Section -->
+            <section class="visualization-section card">
+                <h2 class="section-title">Degradation Analysis</h2>
+                <div class="chart-container">
+                    <canvas id="degradationChart"></canvas>
+                </div>
+            </section>
+
+            <!-- Interpretation Panel -->
+            <section class="interpretation-section card">
+                <h2 class="section-title">Analysis & Interpretation</h2>
+                <div class="interpretation-content">
+                    <div class="interpretation-text" id="interpretationText">
+                        <p class="interpretation-item">Awaiting data analysis...</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="renderer.js"></script>
+</body>
+</html>

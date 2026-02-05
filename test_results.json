@@ -1,0 +1,230 @@
+[
+  {
+    "test_file": "test_10_minimal.csv",
+    "success": true,
+    "predictions": {
+      "soh": 80.0,
+      "rul": 41.0,
+      "soh_class": "Not-Healthy",
+      "rul_class": "Short RUL",
+      "confidence": 1.9761062835106617e-05
+    },
+    "ground_truth": {
+      "soh": 99.50433722277577,
+      "first_capacity": 1.997658630430508,
+      "last_capacity": 1.9877569801834567,
+      "cycles": 5
+    },
+    "error": 19.504337222775774,
+    "records": 5
+  },
+  {
+    "test_file": "test_11_out_of_range.csv",
+    "success": true,
+    "predictions": {
+      "soh": 80.0,
+      "rul": 41.0,
+      "soh_class": "Not-Healthy",
+      "rul_class": "Short RUL",
+      "confidence": 5.687396781371962e-06
+    },
+    "ground_truth": {
+      "soh": 90.00525934908771,
+      "first_capacity": 1.997658630430508,
+      "last_capacity": 1.7979978312284122,
+      "cycles": 50
+    },
+    "error": 10.005259349087709,
+    "records": 50
+  },
+  {
+    "test_file": "test_12_corrupted.csv",
+    "success": true,
+    "predictions": {
+      "soh": 80.0,
+      "rul": 41.0,
+      "soh_class": "Not-Healthy",
+      "rul_class": "Short RUL",
+      "confidence": 2.2430902314282106e-05
+    },
+    "ground_truth": {
+      "soh": 87.88882653089603,
+      "first_capacity": 1.997658630430508,
+      "last_capacity": 1.7557187283785425,
+      "cycles": 55
+    },
+    "error": 7.888826530896026,
+    "records": 55
+  },
+  {
+    "test_file": "test_1_healthy.csv",
+    "success": true,
+    "predictions": {
+      "soh": 80.0,
+      "rul": 41.0,
+      "soh_class": "Not-Healthy",
+      "rul_class": "Short RUL",
+      "confidence": 2.5384429082911434e-05
+    },
+    "ground_truth": {
+      "soh": 97.363873967258,
+      "first_capacity": 1.997658630430508,
+      "last_capacity": 1.944997831228412,
+      "cycles": 50
+    },
+    "error": 17.363873967258,
+    "records": 50
+  },
+  {
+    "test_file": "test_2_moderate.csv",
+    "success": true,
+    "predictions": {
+      "soh": 80.0,
+      "rul": 41.0,
+      "soh_class": "Not-Healthy",
+      "rul_class": "Short RUL",
+      "confidence": 2.9624766859561203e-05
+    },
+    "ground_truth": {
+      "soh": 85.25953819467065,
+      "first_capacity": 1.997658630430508,
+      "last_capacity": 1.7031945230110337,
+      "cycles": 80
+    },
+    "error": 5.259538194670654,
+    "records": 80
+  },
+  {
+    "test_file": "test_3_aged.csv",
+    "success": true,
+    "predictions": {
+      "soh": 80.0,
+      "rul": 41.0,
+      "soh_class": "Not-Healthy",
+      "rul_class": "Short RUL",
+      "confidence": 3.0502744972225798e-05
+    },
+    "ground_truth": {
+      "soh": 76.04935965586348,
+      "first_capacity": 1.997658630430508,
+      "last_capacity": 1.5192065965524937,
+      "cycles": 120
+    },
+    "error": 3.9506403441365165,
+    "records": 120
+  },
+  {
+    "test_file": "test_4_extreme_cold.csv",
+    "success": true,
+    "predictions": {
+      "soh": 80.0,
+      "rul": 41.0,
+      "soh_class": "Not-Healthy",
+      "rul_class": "Short RUL",
+      "confidence": 0.00016468027289127954
+    },
+    "ground_truth": {
+      "soh": 89.82319412760624,
+      "first_capacity": 1.997658630430508,
+      "last_capacity": 1.7943607896184752,
+      "cycles": 60
+    },
+    "error": 9.823194127606243,
+    "records": 60
+  },
+  {
+    "test_file": "test_5_extreme_heat.csv",
+    "success": true,
+    "predictions": {
+      "soh": 80.0,
+      "rul": 41.0,
+      "soh_class": "Not-Healthy",
+      "rul_class": "Short RUL",
+      "confidence": 1.1873031752279867e-05
+    },
+    "ground_truth": {
+      "soh": 79.97833556814938,
+      "first_capacity": 1.997658630430508,
+      "last_capacity": 1.5976941229518085,
+      "cycles": 60
+    },
+    "error": 0.021664431850624055,
+    "records": 60
+  },
+  {
+    "test_file": "test_6_rapid_discharge.csv",
+    "success": true,
+    "predictions": {
+      "soh": 80.0,
+      "rul": 41.0,
+      "soh_class": "Not-Healthy",
+      "rul_class": "Short RUL",
+      "confidence": 2.8467827860218834e-05
+    },
+    "ground_truth": {
+      "soh": 86.25334661440857,
+      "first_capacity": 1.997658630430508,
+      "last_capacity": 1.7230474226778731,
+      "cycles": 70
+    },
+    "error": 6.253346614408571,
+    "records": 70
+  },
+  {
+    "test_file": "test_7_voltage_spike.csv",
+    "success": true,
+    "predictions": {
+      "soh": 80.0,
+      "rul": 41.0,
+      "soh_class": "Not-Healthy",
+      "rul_class": "Short RUL",
+      "confidence": 6.089379598472948e-05
+    },
+    "ground_truth": {
+      "soh": 87.3809878134408,
+      "first_capacity": 1.997658630430508,
+      "last_capacity": 1.7455738444106306,
+      "cycles": 65
+    },
+    "error": 7.380987813440797,
+    "records": 65
+  },
+  {
+    "test_file": "test_8_sudden_drop.csv",
+    "success": true,
+    "predictions": {
+      "soh": 80.0,
+      "rul": 41.0,
+      "soh_class": "Not-Healthy",
+      "rul_class": "Short RUL",
+      "confidence": 4.4078603046417057e-05
+    },
+    "ground_truth": {
+      "soh": 84.925177344681,
+      "first_capacity": 1.997658630430508,
+      "last_capacity": 1.6965151346344345,
+      "cycles": 75
+    },
+    "error": 4.925177344681003,
+    "records": 75
+  },
+  {
+    "test_file": "test_9_missing_values.csv",
+    "success": true,
+    "predictions": {
+      "soh": 80.0,
+      "rul": 41.0,
+      "soh_class": "Not-Healthy",
+      "rul_class": "Short RUL",
+      "confidence": 2.9471522813121235e-05
+    },
+    "ground_truth": {
+      "soh": 89.82319412760624,
+      "first_capacity": 1.997658630430508,
+      "last_capacity": 1.7943607896184752,
+      "cycles": 60
+    },
+    "error": 9.823194127606243,
+    "records": 60
+  }
+]

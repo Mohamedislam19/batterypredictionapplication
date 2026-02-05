@@ -1,0 +1,87 @@
+{
+  "name": "battery-health-prediction-system",
+  "version": "1.0.0",
+  "description": "NASA Battery Health Prediction System - Li-ion Battery Degradation Analysis",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --dev",
+    "build": "electron-builder build --win",
+    "build:mac": "electron-builder build --mac",
+    "dist": "electron-builder",
+    "package": "node build-scripts/package.js",
+    "release": "node build-scripts/release.js"
+  },
+  "keywords": ["battery", "health", "prediction", "nasa", "electron"],
+  "author": "Battery Health Team",
+  "license": "MIT",
+  "build": {
+    "appId": "com.batteryhealth.prediction",
+    "productName": "Battery Health Prediction",
+    "directories": {
+      "output": "dist",
+      "buildResources": "build-resources"
+    },
+    "files": [
+      "main.js",
+      "renderer.js",
+      "index.html",
+      "styles.css",
+      "predictionService.js",
+      "agents/**/*",
+      "*.py",
+      "Battery-health-prediction-develop/**/*",
+      "!Battery-health-prediction-develop/processed_data/**/*",
+      "!Battery-health-prediction-develop/**/*.ipynb",
+      "node_modules/**/*"
+    ],
+    "extraResources": [
+      {
+        "from": "python-dist",
+        "to": "python-dist",
+        "filter": ["**/*"]
+      },
+      {
+        "from": "Battery-health-prediction-develop/models",
+        "to": "models",
+        "filter": ["*.joblib"]
+      }
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        }
+      ],
+      "icon": "build-resources/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Battery Health Prediction",
+      "installerIcon": "build-resources/icon.ico",
+      "uninstallerIcon": "build-resources/icon.ico",
+      "installerHeaderIcon": "build-resources/icon.ico",
+      "license": "LICENSE.txt"
+    },
+    "mac": {
+      "target": ["dmg", "zip"],
+      "icon": "build-resources/icon.icns",
+      "category": "public.app-category.utilities"
+    },
+    "dmg": {
+      "title": "Battery Health Prediction ${version}",
+      "icon": "build-resources/icon.icns"
+    }
+  },
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-builder": "^24.9.1"
+  },
+  "dependencies": {
+    "chart.js": "^4.4.1"
+  }
+}
